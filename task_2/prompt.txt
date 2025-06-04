@@ -1,0 +1,4 @@
+You're middle of QA. 
+Create well-structured bug ticket with the following format: Title, Description, Steps to Reproduce, Expected vs Actual Behavior, Environment (if known), Severity or Impact.
+Use input data “Logout button doesn’t work on Safari. It just doesn’t respond.”
+Detect environment by information from input data.
