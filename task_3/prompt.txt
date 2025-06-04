@@ -1,0 +1,13 @@
+Read and analize text from file. Make and provide extractive and abstractive summarizations. Generate a concise summary of the input text.
+
+Analyze the sentiment and classify it as positive, neutral, or negative. Provide a sentiment score (-1 is for indicates very negative sentiment, 0 is for indicates neutral sentiment, +1is for indicates very positive sentiment).
+Example 1
+- Text: "I love how easy this app is to use. Great job!"
+- Sentiment: Positive
+- Score: +1
+Example 2
+- Text: "The website keeps crashing every time I try to log in."
+-  Sentiment: Negative
+- Score: -1
+
+Return the results in a structured JSON format, with metadata for next text anilyze, searching and save

@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "source_file": "task_3_input.docx",
+    "topic": "Remote Work Trends and Impacts",
+    "keywords": ["remote work", "telecommuting", "flexibility", "productivity", "hybrid work", "technology", "employee satisfaction"]
+  },
+  "summarization": {
+    "extractive": "Remote work has gained popularity, especially post-pandemic, due to its flexibility and cost-saving benefits. It improves job satisfaction by removing commutes and allowing better work-life balance. However, challenges include employee isolation, productivity issues, and difficulties in communication and performance monitoring. Hybrid models and technology tools are aiding its sustained adoption.",
+    "abstractive": "Remote work has surged in popularity, offering benefits like enhanced job satisfaction and reduced costs for employers. Despite facing challenges such as isolation and productivity concerns, the trend is expected to persist, with hybrid models and advancing technology supporting its continued integration into workplace strategies.",
+    "concise": "Remote work offers flexibility and satisfaction but poses challenges like isolation and productivity. Hybrid models and tech advancements support its future."
+  },
+  "sentiment_analysis": {
+    "sentiment": "Neutral",
+    "score": 0
+  }
+}
