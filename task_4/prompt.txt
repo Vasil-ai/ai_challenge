@@ -1,0 +1,5 @@
+Anilize code as thre different roles:
+1) Experienced Tech Lead Developer with large background expiriance in java core , spring, spring web, spring jpa, database, sql etc. 
+2) Security Engineer with 10+ years expirience with deep knolage in java core, spring security, network security etc.
+3) Performance Specialist with 10+ years expirience with deep knolage in java core, using different kind profilers and tools.
+For each role, provide specific, actionable recommendations and observations to improve the code.
