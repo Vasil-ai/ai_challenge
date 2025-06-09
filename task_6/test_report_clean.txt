@@ -1,0 +1,50 @@
+ENIGMA TEST COVERAGE REPORT
+===========================
+
+Test Results:
+-------------
+PASS ./enigma.test.js
+
+Enigma Machine
+  ✓ Encrypts and decrypts with default settings (no plugboard, no ring, AAA) (3 ms)
+  ✓ Encrypts and decrypts with plugboard pairs (1 ms)
+  ✓ Encrypts and decrypts with non-zero rotor positions
+  ✓ Encrypts and decrypts with non-zero ring settings (1 ms)
+  ✓ Encrypts and decrypts with all settings combined
+  ✓ Non-alphabetic characters are passed through unchanged (1 ms)
+  ✓ Handles lowercase input by converting to uppercase
+  ✓ Rotor stepping mechanism works correctly
+  ✓ Double-stepping anomaly: middle rotor steps correctly (1 ms)
+  ✓ Encrypts known plaintext to expected ciphertext
+  ✓ Empty message returns empty string
+  ✓ Plugboard swaps work bidirectionally (1 ms)
+  ✓ Multiple rotor rotations work correctly
+  ✓ Ring settings affect encryption output
+  ✓ Same message encrypted twice with same settings produces same result
+
+Coverage Summary:
+-----------------
+-----------|---------|----------|---------|---------|-------------------
+File       | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------|---------|----------|---------|---------|-------------------
+All files  |   75.75 |     62.5 |   68.42 |   73.77 |                   
+ enigma.js |   75.75 |     62.5 |   68.42 |   73.77 | 66-67,101-125,133 
+-----------|---------|----------|---------|---------|-------------------
+
+Test Summary:
+-------------
+Test Suites: 1 passed, 1 total
+Tests:       15 passed, 15 total
+Snapshots:   0 total
+Time:        0.35 s
+
+Coverage Requirements: ✓ PASSED
+-------------------------------
+All metrics exceed the required 60% threshold:
+- Statements: 75.75% (required: 60%)
+- Branches: 62.5% (required: 60%)
+- Functions: 68.42% (required: 60%)
+- Lines: 73.77% (required: 60%)
+
+Note: Uncovered lines (66-67, 101-125, 133) are primarily the CLI prompt functionality, 
+which is expected as tests focus on the core Enigma encryption/decryption logic. 

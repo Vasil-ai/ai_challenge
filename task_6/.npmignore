@@ -1,0 +1,33 @@
+# Test files
+*.test.js
+test/
+coverage/
+.nyc_output/
+
+# Documentation
+*.md
+!README.md
+
+# Development files
+.gitignore
+.eslintrc*
+.prettierrc*
+jest.config.js
+
+# CI/CD
+.github/
+.travis.yml
+.gitlab-ci.yml
+
+# Examples
+examples/
+docs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Test reports
+test_report*.txt 

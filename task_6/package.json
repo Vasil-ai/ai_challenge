@@ -1,0 +1,28 @@
+{
+  "name": "enigma-machine",
+  "version": "1.0.0",
+  "description": "Enigma machine implementation with CLI",
+  "main": "enigma.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": ["enigma", "encryption", "cryptography"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 60,
+        "functions": 60,
+        "lines": 60,
+        "statements": 60
+      }
+    }
+  }
+} 
