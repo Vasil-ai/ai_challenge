@@ -1,0 +1,42 @@
+{
+  "name": "seabattle-game",
+  "version": "1.0.0",
+  "description": "Modern ES6+ SeaBattle (Battleship) game with comprehensive unit tests",
+  "main": "game.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start": "node game.js"
+  },
+  "keywords": [
+    "battleship",
+    "seabattle",
+    "game",
+    "javascript",
+    "es6"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "*.js",
+      "!node_modules/**",
+      "!jest.config.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "coverageDirectory": "coverage",
+    "testMatch": [
+      "**/__tests__/**/*.js",
+      "**/?(*.)+(spec|test).js"
+    ]
+  }
+}
