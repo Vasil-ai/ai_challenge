@@ -17,7 +17,7 @@ You play against a CPU opponent. Both players place their ships on a 10x10 grid.
 2.  **Navigate to the project directory** in your terminal.
 3.  **Run the game** using the command:
     ```bash
-    node seabattle.js
+    node game.js
     ```
 4.  **Follow the prompts** to enter your guesses (e.g., `00` for the top-left corner, `99` for the bottom-right).
 
