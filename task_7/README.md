@@ -1,6 +1,58 @@
-# Sea Battle CLI Game
+# SeaBattle Game
 
-This is a simple command-line interface (CLI) implementation of the classic Sea Battle (Battleship) game, written in JavaScript.
+A modern ES6+ implementation of the classic Battleship game with comprehensive unit testing and modular architecture.
+
+## Features
+
+- Modern JavaScript (ES6+) with classes and modules
+- Clean modular file structure with separation of concerns
+- Object-oriented architecture
+- Comprehensive unit test suite with Jest
+- 74.27% test coverage (exceeds 60% requirement)
+- AI opponent with hunt and target modes
+- Full backward compatibility
+
+## File Structure
+
+```
+seabattle-game/
+├── src/
+│   ├── config/
+│   │   └── GameConfig.js          # Game configuration constants
+│   ├── models/
+│   │   ├── Ship.js                # Ship class
+│   │   ├── Board.js               # Board management
+│   │   ├── Player.js              # Base player class
+│   │   └── CPUPlayer.js           # AI player implementation
+│   ├── ui/
+│   │   └── GameUI.js              # User interface handling
+│   ├── game/
+│   │   └── SeaBattleGame.js       # Main game controller
+│   └── index.js                   # Main export file
+├── test/
+│   └── seabattle.test.js          # Comprehensive test suite
+├── game.js                        # Game launcher
+├── test_report.txt                # Detailed coverage report
+├── refactoring.md                 # Refactoring documentation
+└── package.json                   # Project configuration
+```
+
+## Architecture
+
+### Configuration Layer
+- **`GameConfig.js`**: Centralized game constants and settings
+
+### Model Layer
+- **`Ship.js`**: Individual ship behavior and state
+- **`Board.js`**: Game board management and display
+- **`Player.js`**: Base player functionality
+- **`CPUPlayer.js`**: AI logic with hunt/target modes
+
+### UI Layer
+- **`GameUI.js`**: User interface and input/output handling
+
+### Game Layer
+- **`SeaBattleGame.js`**: Main game controller and flow management
 
 ## Gameplay
 
@@ -11,14 +63,38 @@ You play against a CPU opponent. Both players place their ships on a 10x10 grid.
 - `X` represents a hit (on either board).
 - `O` represents a miss (on either board).
 
-## How to Run
+## Installation
 
-1.  **Ensure you have Node.js installed.** You can download it from [https://nodejs.org/](https://nodejs.org/).
-2.  **Navigate to the project directory** in your terminal.
-3.  **Run the game** using the command:
-    ```bash
-    node game.js
-    ```
-4.  **Follow the prompts** to enter your guesses (e.g., `00` for the top-left corner, `99` for the bottom-right).
+```bash
+npm install
+```
 
-Enjoy the game! 
+## Running the Game
+
+```bash
+npm start
+```
+
+## Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+## Import Usage
+
+```javascript
+// Import specific classes
+const SeaBattleGame = require('./src/game/SeaBattleGame');
+const Ship = require('./src/models/Ship');
+
+// Import all classes (recommended)
+const { SeaBattleGame, Ship, Board } = require('./src');
+``` 

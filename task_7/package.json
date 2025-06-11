@@ -24,8 +24,11 @@
   "jest": {
     "testEnvironment": "node",
     "collectCoverageFrom": [
+      "src/**/*.js",
       "*.js",
       "!node_modules/**",
+      "!test/**",
+      "!coverage/**",
       "!jest.config.js"
     ],
     "coverageReporters": [
@@ -35,6 +38,8 @@
     ],
     "coverageDirectory": "coverage",
     "testMatch": [
+      "**/test/**/*.test.js",
+      "**/test/**/*.spec.js",
       "**/__tests__/**/*.js",
       "**/?(*.)+(spec|test).js"
     ]

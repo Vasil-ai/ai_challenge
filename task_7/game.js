@@ -1,4 +1,4 @@
-const { SeaBattleGame } = require('./seabattle.js');
+const SeaBattleGame = require('./src/game/SeaBattleGame');
 
 // Start the game
 const game = new SeaBattleGame();

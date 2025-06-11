@@ -6,7 +6,7 @@ const {
   GameUI,
   SeaBattleGame,
   GAME_CONFIG
-} = require('./seabattle.js');
+} = require('../src/index.js');
 
 // Mock readline for GameUI tests
 const mockRl = {
