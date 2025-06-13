@@ -88,19 +88,21 @@ if (result.valid) {
 
 #### d. Example: Run Validation from CLI
 
-You can create a file (e.g., `validate-user.js`):
+You can create a file (e.g., `validate-user.js`) in your project directory:
 
 ```javascript
 const { Schema } = require('./schema.js');
 const userSchema = Schema.object({
   name: Schema.string().minLength(2),
-  email: Schema.string().pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+  email: Schema.string().pattern(/^[^\s@]+@[^-\s@]+\.[^\s@]+$/)
 });
 
 const user = { name: 'Bob', email: 'bob@example.com' };
 const result = userSchema.validate(user);
 console.log(result);
 ```
+
+> **Note:** The file `validate-user.js` is not included by default. You must create it yourself if you want to run this example.
 
 Then run:
 
@@ -244,117 +246,4 @@ All validators inherit these methods:
 
 ### ArrayValidator
 
-- `.minItems(count)` - Sets minimum array length
-- `.maxItems(count)` - Sets maximum array length
-
-### ValidationResult
-
-All validation methods return a ValidationResult object:
-
-```typescript
-{
-  valid: boolean,      // Whether validation passed
-  errors: string[],    // Array of error messages
-  value: any          // The validated value
-}
-```
-
-## Error Handling
-
-The library provides detailed error messages with field-specific context:
-
-```javascript
-const schema = Schema.object({
-  user: Schema.object({
-    name: Schema.string().minLength(2),
-    email: Schema.string().pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-  })
-});
-
-const result = schema.validate({
-  user: {
-    name: 'J',
-    email: 'invalid-email'
-  }
-});
-
-console.log(result.errors);
-// [
-//   'field.user.name must be at least 2 characters long',
-//   'field.user.email format is invalid'
-// ]
-```
-
-## Advanced Examples
-
-### Form Validation
-
-```javascript
-const registrationSchema = Schema.object({
-  username: Schema.string()
-    .minLength(3)
-    .maxLength(20)
-    .pattern(/^[a-zA-Z0-9_]+$/)
-    .withMessage('Username must be 3-20 characters, letters, numbers, and underscores only'),
-  
-  password: Schema.string()
-    .minLength(8)
-    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Password must be at least 8 characters with uppercase, lowercase, and number'),
-  
-  confirmPassword: Schema.string(),
-  
-  email: Schema.string()
-    .pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
-    .withMessage('Please enter a valid email address'),
-  
-  birthDate: Schema.date()
-    .maxDate(new Date())
-    .withMessage('Birth date cannot be in the future'),
-  
-  terms: Schema.boolean()
-    .withMessage('You must accept the terms and conditions')
-});
-```
-
-### API Request Validation
-
-```javascript
-const createPostSchema = Schema.object({
-  title: Schema.string().minLength(1).maxLength(200),
-  content: Schema.string().minLength(10),
-  tags: Schema.array(Schema.string().minLength(1)).maxItems(10),
-  publishAt: Schema.date().minDate(new Date()).optional(),
-  category: Schema.string().pattern(/^(tech|lifestyle|business)$/)
-});
-
-function validateCreatePost(data) {
-  const result = createPostSchema.validate(data);
-  if (!result.valid) {
-    throw new Error(`Validation failed: ${result.errors.join(', ')}`);
-  }
-  return result.value;
-}
-```
-
-## Best Practices
-
-1. **Use descriptive field names** in your validation calls for better error messages
-2. **Provide custom messages** for user-facing validations
-3. **Validate at boundaries** - API endpoints, form submissions, external data
-4. **Reuse schemas** for consistent validation across your application
-5. **Handle validation results** properly in your application logic
-
-## Browser Compatibility
-
-This library uses modern JavaScript features:
-- ES6 Classes
-- Template literals
-- Arrow functions
-- Object destructuring
-
-Supports all modern browsers and Node.js environments.
-
-## License
-
-MIT License - feel free to use in your projects! 
+- `.minItems(count)`
