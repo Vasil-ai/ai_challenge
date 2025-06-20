@@ -29,7 +29,7 @@ public class ProductSearchApplication implements CommandLineRunner {
         }));
         Scanner scanner = new Scanner(System.in);
         String apiKey = env.getProperty("openai.api.key");
-        String model = env.getProperty("openai.model", "gpt-4o");
+        String model = env.getProperty("openai.model", "gpt-4.1-mini");//"gpt-4o");
         String apiUrl = env.getProperty("openai.api.url", "https://api.openai.com/v1/chat/completions");
         List<Product> products = JsonUtil.loadProducts("products.json");
         OpenAiService aiService = new OpenAiService(apiKey, model, apiUrl);
@@ -42,20 +42,48 @@ public class ProductSearchApplication implements CommandLineRunner {
             }
             try {
                 ProductFilter filter = aiService.extractFilterFromInput(userInput);
-                List<Product> filtered = aiService.filterProductsWithOpenAI(products, filter);
+                // System.out.println("[DEBUG] Extracted filter: " + filter);
+                List<Product> aiFiltered = aiService.filterProductsWithOpenAI(products, filter);
+                List<Product> filtered = filterProductsStrict(aiFiltered, filter);
                 System.out.println("Filtered Products:");
                 if (filtered.isEmpty()) {
                     System.out.println("No products found matching your criteria.");
                 } else {
                     int i = 1;
                     for (Product p : filtered) {
-                        System.out.printf("%d. %s - $%.2f, Rating: %.1f, %s\n",
-                                i++, p.name(), p.price(), p.rating(), p.inStock() ? "In Stock" : "Out of Stock");
+                        System.out.printf("%d. %s - $%.2f, Category: %s, Rating: %.1f, %s\n",
+                                i++, p.name(), p.price(), p.category(), p.rating(), p.inStock() ? "In Stock" : "Out of Stock");
                     }
                 }
             } catch (Exception e) {
                 System.out.println("An error occurred while processing your request: " + e.getMessage());
             }
         }
+    }
+
+    // @VisibleForTesting
+    public static List<Product> filterProductsStrict(List<Product> products, ProductFilter filter) {
+        return products.stream()
+            .filter(p -> filter.category() == null || p.category().equalsIgnoreCase(filter.category()))
+            .filter(p -> {
+                if (filter.price() == null || filter.priceComparison() == null) return true;
+                return switch (filter.priceComparison()) {
+                    case "min" -> p.price() >= filter.price();
+                    case "max" -> p.price() <= filter.price();
+                    case "equals" -> p.price() == filter.price();
+                    default -> true;
+                };
+            })
+            .filter(p -> {
+                if (filter.rating() == null || filter.ratingComparison() == null) return true;
+                return switch (filter.ratingComparison()) {
+                    case "min" -> p.rating() >= filter.rating();
+                    case "max" -> p.rating() <= filter.rating();
+                    case "equals" -> p.rating() == filter.rating();
+                    default -> true;
+                };
+            })
+            .filter(p -> filter.inStock() == null || p.inStock() == filter.inStock())
+            .toList();
     }
 } 

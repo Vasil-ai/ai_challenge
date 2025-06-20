@@ -9,6 +9,7 @@
   { "name": "Gaming Mouse", "category": "Electronics", "price": 59.99, "rating": 4.3, "in_stock": true },
   { "name": "External Hard Drive", "category": "Electronics", "price": 89.99, "rating": 4.4, "in_stock": true },
   { "name": "Portable Charger", "category": "Electronics", "price": 29.99, "rating": 4.2, "in_stock": true },
+
   { "name": "Yoga Mat", "category": "Fitness", "price": 19.99, "rating": 4.3, "in_stock": true },
   { "name": "Treadmill", "category": "Fitness", "price": 899.99, "rating": 4.6, "in_stock": false },
   { "name": "Dumbbell Set", "category": "Fitness", "price": 149.99, "rating": 4.7, "in_stock": true },
@@ -19,6 +20,7 @@
   { "name": "Pull-up Bar", "category": "Fitness", "price": 59.99, "rating": 4.4, "in_stock": true },
   { "name": "Jump Rope", "category": "Fitness", "price": 9.99, "rating": 4.0, "in_stock": true },
   { "name": "Ab Roller", "category": "Fitness", "price": 19.99, "rating": 4.2, "in_stock": true },
+  
   { "name": "Blender", "category": "Kitchen", "price": 49.99, "rating": 4.2, "in_stock": true },
   { "name": "Air Fryer", "category": "Kitchen", "price": 89.99, "rating": 4.6, "in_stock": true },
   { "name": "Microwave Oven", "category": "Kitchen", "price": 129.99, "rating": 4.5, "in_stock": false },

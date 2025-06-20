@@ -9,4 +9,9 @@ public record Product(
     double price,
     double rating,
     @JsonProperty("in_stock") @JsonAlias("inStock") boolean inStock
-) {} 
+) {
+    // For testability
+    public static Product of(String name, String category, double price, double rating, boolean inStock) {
+        return new Product(name, category, price, rating, inStock);
+    }
+} 
