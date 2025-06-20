@@ -1,0 +1,20 @@
+{
+  "wordCount" : 968,
+  "speakingSpeedWpm" : 968.0,
+  "frequentlyMentionedTopics" : [ {
+    "topic" : "chest pain",
+    "mentions" : 15
+  }, {
+    "topic" : "heart attack",
+    "mentions" : 7
+  }, {
+    "topic" : "symptoms",
+    "mentions" : 10
+  }, {
+    "topic" : "medical history",
+    "mentions" : 5
+  }, {
+    "topic" : "diagnostic tests",
+    "mentions" : 3
+  } ]
+}
