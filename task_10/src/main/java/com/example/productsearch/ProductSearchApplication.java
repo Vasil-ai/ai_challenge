@@ -29,7 +29,7 @@ public class ProductSearchApplication implements CommandLineRunner {
         }));
         Scanner scanner = new Scanner(System.in);
         String apiKey = env.getProperty("openai.api.key");
-        String model = env.getProperty("openai.model", "gpt-4.1-mini");//"gpt-4o");
+        String model = env.getProperty("openai.model", "gpt-4.1-mini");
         String apiUrl = env.getProperty("openai.api.url", "https://api.openai.com/v1/chat/completions");
         List<Product> products = JsonUtil.loadProducts("products.json");
         OpenAiService aiService = new OpenAiService(apiKey, model, apiUrl);
@@ -42,9 +42,28 @@ public class ProductSearchApplication implements CommandLineRunner {
             }
             try {
                 ProductFilter filter = aiService.extractFilterFromInput(userInput);
-                // System.out.println("[DEBUG] Extracted filter: " + filter);
-                List<Product> aiFiltered = aiService.filterProductsWithOpenAI(products, filter);
-                List<Product> filtered = filterProductsStrict(aiFiltered, filter);
+                System.out.println("[DEBUG] Extracted filter: " + filter);
+                // Hybrid filtering: use AI to extract filter, but use Java to strictly filter, sort, and limit
+                List<Product> filtered = filterProductsStrict(products, filter);
+                // Apply sort and limit if specified in filter
+                if (filter.sortBy() != null) {
+                    if (filter.sortBy().equalsIgnoreCase("price")) {
+                        filtered = filtered.stream()
+                                .sorted((a, b) -> filter.sortOrder() != null && filter.sortOrder().equalsIgnoreCase("desc")
+                                        ? Double.compare(b.price(), a.price())
+                                        : Double.compare(a.price(), b.price()))
+                                .toList();
+                    } else if (filter.sortBy().equalsIgnoreCase("rating")) {
+                        filtered = filtered.stream()
+                                .sorted((a, b) -> filter.sortOrder() != null && filter.sortOrder().equalsIgnoreCase("desc")
+                                        ? Double.compare(b.rating(), a.rating())
+                                        : Double.compare(a.rating(), b.rating()))
+                                .toList();
+                    }
+                }
+                if (filter.limit() != null && filter.limit() > 0 && filtered.size() > filter.limit()) {
+                    filtered = filtered.subList(0, filter.limit());
+                }
                 System.out.println("Filtered Products:");
                 if (filtered.isEmpty()) {
                     System.out.println("No products found matching your criteria.");
